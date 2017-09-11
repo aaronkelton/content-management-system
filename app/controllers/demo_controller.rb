@@ -7,6 +7,7 @@ class DemoController < ApplicationController
   end
 
   def hello
+    @array = [*1..5]
     render template: 'demo/hello.html.erb'
   end
 

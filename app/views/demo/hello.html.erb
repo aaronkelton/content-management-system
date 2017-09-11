@@ -8,6 +8,6 @@
 <%= target = "world" %>
 <%= "Hello #{target}" %>
 <br />
-<% 3.times do |n| %>
-  <%= n %><br />
+<% @array.each do |n| %>
+  <%= n ** n %><br />
 <% end %>
