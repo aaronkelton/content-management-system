@@ -8,6 +8,8 @@ class DemoController < ApplicationController
 
   def hello
     @array = [*1..5]
+    @id = params['id']
+    @page = params[:page]
     render template: 'demo/hello.html.erb'
   end
 

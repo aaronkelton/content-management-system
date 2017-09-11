@@ -4,4 +4,6 @@
 <p>Find me in app/views/demo/index.html.erb</p>
 
 <a href="/demo/hello">Hello via html</a><br />
-<%= link_to 'Hello via link_to', {controller: 'demo', action: 'hello'} %>
+<%= link_to 'Hello via link_to', {controller: 'demo', action: 'hello'} %><br />
+
+<%= link_to 'Hello with params', {controller: 'demo', action: 'hello', page: 5, id: 20} %><br />
