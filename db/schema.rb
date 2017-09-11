@@ -24,8 +24,15 @@ ActiveRecord::Schema.define(version: 20170911220654) do
   end
 
   create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "permalink"
+    t.integer "position"
+    t.boolean "visible"
+    t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_pages_on_name"
+    t.index ["subject_id"], name: "index_pages_on_subject_id"
   end
 
   create_table "sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -42,4 +49,5 @@ ActiveRecord::Schema.define(version: 20170911220654) do
     t.index ["name"], name: "index_subjects_on_name"
   end
 
+  add_foreign_key "pages", "subjects"
 end
