@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # get 'demo/index' # shorthand version
   match 'demo/index', to: 'demo#index', via: :get # longhand version
 
+  # Match the url {{ site.url }}/demo/hello to the demo controller, hello method
+  match 'demo/hello', to: 'demo#hello', via: :get
+
   # DEFAULT Route, parens indicate optional
   # may be deprecated in future Rails versions
   # get ':controller(/:action(/:id))'
