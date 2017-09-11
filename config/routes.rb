@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   # Match the url {{ site.url }}/demo/hello to the demo controller, hello method
   match 'demo/hello', to: 'demo#hello', via: :get
 
+  # SIMPLE Route for matching demo#other_hello
+  match 'demo/other_hello', to: 'demo#other_hello', via: :get
+
+  # SIMPLE Route for matching demo#lynda
+  match 'demo/lynda', to: 'demo#lynda', via: :get
+
   # DEFAULT Route, parens indicate optional
   # may be deprecated in future Rails versions
   # get ':controller(/:action(/:id))'
