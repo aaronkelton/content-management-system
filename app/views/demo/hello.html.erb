@@ -11,3 +11,7 @@
 <% @array.each do |n| %>
   <%= n ** n %><br />
 <% end %>
+<br />
+
+<p>The root route will take precedence...</p>
+<%= link_to 'Index via link_to', {controller: 'demo', action: 'index'} %>
