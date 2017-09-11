@@ -1,5 +1,5 @@
 class CreateSections < ActiveRecord::Migration[5.1]
-  def change
+  def up
     create_table :sections do |t|
       t.string   :name, index: true
       t.integer  :position
@@ -10,5 +10,9 @@ class CreateSections < ActiveRecord::Migration[5.1]
         # not sure about fkey'ing :subject w/ hmthru
       t.timestamps
     end
+  end
+
+  def up
+    drop_table :sections
   end
 end
