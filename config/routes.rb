@@ -2,13 +2,9 @@ Rails.application.routes.draw do
 
   ##### GENERATED ROUTES #####
   get 'subjects/index'
-
   get 'subjects/show'
-
   get 'subjects/new'
-
   get 'subjects/edit'
-
   get 'subjects/delete'
   ### END GENERATED ROUTES ###
 
