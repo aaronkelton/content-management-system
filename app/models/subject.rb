@@ -1,6 +1,9 @@
 class Subject < ApplicationRecord
-  has_many :pages
+  ################# ASSOCIATIONS ####################
+  has_one :page
+  # has_many :pages
   # has_many :sections, through: :pages
+  ################# END ASSOCIATIONS ################
 
   ################# SCOPES! #########################
   # Subject.where(visible: true)
