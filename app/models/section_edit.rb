@@ -1,0 +1,2 @@
+class SectionEdit < ApplicationRecord
+end
