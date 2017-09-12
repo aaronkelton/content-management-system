@@ -1,7 +1,6 @@
 class Subject < ApplicationRecord
   ################# ASSOCIATIONS ####################
-  has_one :page
-  # has_many :pages
+  has_many :pages
   # has_many :sections, through: :pages
   ################# END ASSOCIATIONS ################
 
