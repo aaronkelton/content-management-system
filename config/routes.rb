@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :pages do
-    member do
-      get :delete
-    end
-  end
-
   # ROOT Route
   # match '/', to: 'demo#index', via: :get #longhand MATCH-y form
   root to: 'demo#index' # shorter sans MATCH
@@ -13,6 +7,11 @@ Rails.application.routes.draw do
 
   ### RESOURCE ROUTES ###
   resources :subjects do
+    member do
+      get :delete
+    end
+  end
+  resources :pages do
     member do
       get :delete
     end
