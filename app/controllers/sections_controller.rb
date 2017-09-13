@@ -1,5 +1,6 @@
 class SectionsController < ApplicationController
   def new
+    @section = Section.new(name: 'Default')
   end
 
   def create
