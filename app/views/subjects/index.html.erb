@@ -19,7 +19,7 @@
       <td class="center"><%= subject.pages.size %></td>
       <td class="actions">
         <%= link_to("Show", subject_path(subject), :class => 'action show') %>
-        <%= link_to("Edit", '#', :class => 'action edit') %>
+        <%= link_to("Edit", edit_subject_path(subject), :class => 'action edit') %>
         <%= link_to("Delete", '#', :class => 'action delete') %>
       </td>
     </tr>
