@@ -16,7 +16,6 @@ class SubjectsController < ApplicationController
       # If save fails, redisplay the form so user can fix problems
       render template: 'new'
     end
-
   end
   #### END CREATE ####
 
@@ -36,6 +35,16 @@ class SubjectsController < ApplicationController
   end
 
   def update
+    # Find a new object using form params
+    @subject = Subject.find(params[:id])
+    # Update the object
+    if @subject.update_attributes(subject_params)
+      # If save succeeds, redirect to the show action
+      redirect_to subject_path(@subject)
+    else
+      # If save fails, redisplay the form so user can fix problems
+      render template: 'edit'
+    end
   end
   ### END UPDATE ###
 
