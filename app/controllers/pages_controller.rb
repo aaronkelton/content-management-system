@@ -12,7 +12,7 @@ class PagesController < ApplicationController
       flash[:notice] = "Page created successfully!"
       redirect_to pages_path
     else
-      render template: 'new'
+      render 'new'
     end
   end
 
