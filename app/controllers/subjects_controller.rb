@@ -2,6 +2,7 @@ class SubjectsController < ApplicationController
 
   ###### CREATE ######
   def new
+    @subject = Subject.new(name: 'Default')
   end
 
   def create
