@@ -6,6 +6,7 @@ class SectionsController < ApplicationController
   end
 
   def index
+    @sections = Section.sorted
   end
 
   def show

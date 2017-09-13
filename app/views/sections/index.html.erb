@@ -1,2 +1,38 @@
-<h1>Sections#index</h1>
-<p>Find me in app/views/sections/index.html.erb</p>
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="sections index">
+  <h2>Sections</h2>
+
+  <%= link_to("Add New Section", new_section_path, :class => 'action new') %>
+
+  <table class="listing" summary="Section list">
+    <tr class="header">
+      <th>#</th>
+      <th>Section</th>
+      <th>Visible</th>
+      <th>Position</th>
+      <th>Content Type</th>
+      <th>Content</th>
+      <th>Actions</th>
+    </tr>
+    <% @sections.each do |section| %>
+    <tr>
+      <td><%= section.position %></td>
+      <td><%= section.name %></td>
+      <td class="center"><%= section.visible ? 'Yes' : 'No' %></td>
+      <td class="center"><%= section.position %></td>
+      <td class="center"><%= section.content_type %></td>
+      <td class="center"><%= section.content %></td>
+      <td class="actions">
+        <%= link_to("Show", section_path(section), :class => 'action show') %>
+        <%= link_to("Edit", edit_section_path(section), :class => 'action edit') %>
+        <%= link_to("Delete", delete_section_path(section), :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
