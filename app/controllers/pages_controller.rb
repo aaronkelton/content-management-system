@@ -4,7 +4,16 @@ class PagesController < ApplicationController
   end
 
   def create
-    #code
+    # Instantiate a new object using form params
+    @page = Page.new(page_params)
+    # Save the object
+    if @page.save
+      # If save succeeds, redirect to the index action
+      flash[:notice] = "Page created successfully!"
+      redirect_to pages_path
+    else
+      render template: 'new'
+    end
   end
 
   def index
@@ -28,4 +37,9 @@ class PagesController < ApplicationController
   def destroy
     #code
   end
+
+  private
+    def page_params
+      params.require(:page).permit(:name, :visible, :position, :permalink)
+    end
 end
