@@ -4,6 +4,17 @@ class SectionsController < ApplicationController
   end
 
   def create
+    # Instantiate a new object using form params
+    @section = Section.new(section_params)
+    # Save the object
+    if @section.save
+      # If save succeeds, redirect to the index action
+      flash[:notice] = "Section created successfully!"
+      redirect_to sections_path
+    else
+      # If save fails, redisplay the form so user can fix problems
+      render 'new'
+    end
   end
 
   def index
@@ -24,5 +35,10 @@ class SectionsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def section_params
+    params.require(:section).permit(:name, :position, :visible, :content_type, :content)
   end
 end
