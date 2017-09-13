@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   def new
+    @page = Page.new(name: 'Default page')
   end
 
   def create
