@@ -10,6 +10,7 @@ class SubjectsController < ApplicationController
 
   #### READ ####
   def index
+    @subjects = Subject.sorted
   end
 
   def show
