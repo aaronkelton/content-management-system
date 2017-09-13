@@ -7,4 +7,6 @@ class Page < ApplicationRecord
   #, join_table: :pages_admin_users # override conventions
 
   ################# END ASSOCIATIONS ################
+
+  scope :sorted, lambda { order(position: :ASC) }
 end
