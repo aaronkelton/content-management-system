@@ -26,9 +26,21 @@ class SectionsController < ApplicationController
   end
 
   def edit
+    @section = Section.find(params[:id])
   end
 
   def update
+    # Find a new object using form params
+    @section = Section.find(params[:id])
+    # Update the object
+    if @section.update_attributes(section_params)
+      # If save succeeds, redirect to the show action
+      flash[:notice] = "Section upated successfully!"
+      redirect_to section_path(@section)
+    else
+      # If save fails, redisplay the form so user can fix problems
+      render template: 'edit'
+    end
   end
 
   def delete
