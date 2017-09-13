@@ -11,6 +11,7 @@ class SubjectsController < ApplicationController
     # Save the object
     if @subject.save
       # If save succeeds, redirect to the index action
+      flash[:notice] = "Subject created successfully!"
       redirect_to subjects_path
     else
       # If save fails, redisplay the form so user can fix problems
@@ -40,6 +41,7 @@ class SubjectsController < ApplicationController
     # Update the object
     if @subject.update_attributes(subject_params)
       # If save succeeds, redirect to the show action
+      flash[:notice] = "Subject upated successfully!"
       redirect_to subject_path(@subject)
     else
       # If save fails, redisplay the form so user can fix problems
@@ -56,6 +58,7 @@ class SubjectsController < ApplicationController
   def destroy
     @subject = Subject.find(params[:id])
     @subject.destroy
+    flash[:notice] = "Subject '#{@subject.name}' destroyed successfully!"
     redirect_to subjects_path
   end
   ### END DELETE ###
