@@ -44,9 +44,14 @@ class SectionsController < ApplicationController
   end
 
   def delete
+    @section = Section.find(params[:id])
   end
 
   def destroy
+    @section = Section.find(params[:id])
+    @section.destroy
+    flash[:notice] = "Section '#{@section.name}' destroyed successfully!"
+    redirect_to sections_path
   end
 
   private
