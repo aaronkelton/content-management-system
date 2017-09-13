@@ -16,6 +16,11 @@ Rails.application.routes.draw do
       get :delete
     end
   end
+  resources :sections do
+    member do
+      get :delete
+    end
+  end
   ### END RESOURCE ROUTES ###
 
   ##### GENERATED ROUTES #####
