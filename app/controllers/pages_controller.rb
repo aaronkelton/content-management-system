@@ -29,7 +29,17 @@ class PagesController < ApplicationController
   end
 
   def update
-    #code
+    # Find a new object using form params
+    @page = Page.find(params[:id])
+    # Update the object
+    if @page.update_attributes(page_params)
+      # If save succeeds, redirect to the show action
+      flash[:notice] = "Page upated successfully!"
+      redirect_to page_path(@page)
+    else
+      # If save fails, redisplay the form so user can fix problems
+      render template: 'edit'
+    end
   end
 
   def delete
