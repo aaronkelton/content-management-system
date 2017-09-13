@@ -1,2 +1,39 @@
-<h1>Pages#show</h1>
-<p>Find me in app/views/pages/show.html.erb</p>
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= link_to("<< Back to List", pages_path, :class => 'back-link') %>
+
+<div class="pages show">
+  <h2>Show Page</h2>
+
+  <table summary="Page detail view">
+    <tr>
+      <th>Name</th>
+      <td><%= @page.name %></td>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <td><%= @page.position %></td>
+    </tr>
+    <tr>
+      <th>Visible?</th>
+      <td><%= @page.visible ? 'true' : 'false' %></td>
+    </tr>
+    <tr>
+      <th>Permalink?</th>
+      <td><%= @page.permalink ? 'true' : 'false' %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @page.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @page.updated_at %></td>
+    </tr>
+  </table>
+
+</div>

@@ -26,8 +26,6 @@ Rails.application.routes.draw do
   # get 'subjects/delete'
   ### END GENERATED ROUTES ###
 
-
-
   # SIMPLE MATCH Route
   # get 'demo/index' # shorthand version
   match 'demo/index', to: 'demo#index', via: :get # longhand version
