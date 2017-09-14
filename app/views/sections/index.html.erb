@@ -12,21 +12,19 @@
   <table class="listing" summary="Section list">
     <tr class="header">
       <th>#</th>
+      <th>Page ID</th>
       <th>Section</th>
       <th>Visible</th>
       <th>Position</th>
-      <th>Content Type</th>
-      <th>Content</th>
       <th>Actions</th>
     </tr>
     <% @sections.each do |section| %>
     <tr>
       <td><%= section.position %></td>
+      <td><%= section.page_id %></td>
       <td><%= section.name %></td>
       <td class="center"><%= section.visible ? 'Yes' : 'No' %></td>
       <td class="center"><%= section.position %></td>
-      <td class="center"><%= section.content_type %></td>
-      <td class="center"><%= section.content %></td>
       <td class="actions">
         <%= link_to("Show", section_path(section), :class => 'action show') %>
         <%= link_to("Edit", edit_section_path(section), :class => 'action edit') %>
