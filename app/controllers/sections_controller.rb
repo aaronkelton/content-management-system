@@ -1,4 +1,7 @@
 class SectionsController < ApplicationController
+
+  layout 'admin'
+
   def new
     @section = Section.new(name: 'Default')
   end

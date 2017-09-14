@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
 
+  layout 'admin'
+
   ###### CREATE ######
   def new
     @subject = Subject.new(name: 'Default')
