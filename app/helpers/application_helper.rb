@@ -2,7 +2,7 @@ module ApplicationHelper
 
   def status_tag(boolean, options={})
     options[:true_text]  ||= ''
-    options[:false_text] || = ''
+    options[:false_text] ||= ''
 
     if boolean
       content_tag(:span, options[:true_text], class: 'status true')
