@@ -5,32 +5,7 @@
 
   <%= form_for(@section) do |f| %>
 
-    <table summary="Section form fields">
-      <tr>
-        <th>Name</th>
-        <td><%= f.text_field(:name) %></td>
-      </tr>
-      <tr>
-        <th>Page ID</th>
-        <td><%= f.text_field(:page_id) %></td>
-      </tr>
-      <tr>
-        <th>Position</th>
-        <td><%= f.text_field(:position) %></td>
-      </tr>
-      <tr>
-        <th>Visible</th>
-        <td><%= f.text_field(:visible) %></td>
-      </tr>
-      <tr>
-        <th>Content Type</th>
-        <td><%= f.text_field(:content_type) %></td>
-      </tr>
-      <tr>
-        <th>Content</th>
-        <td><%= f.text_field(:content) %></td>
-      </tr>
-    </table>
+    <%= render partial: 'form', locals: { f: f } %>
 
     <div class="form-buttons">
       <%= f.submit("Create Section") %>
