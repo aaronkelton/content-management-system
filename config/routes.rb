@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   # SIMPLE Route for matching demo#lynda
   match 'demo/lynda', to: 'demo#lynda', via: :get
 
+  match 'demo/escape_output', to: 'demo#escape_output', via: :get
+
   # DEFAULT Route, parens indicate optional
   # may be deprecated in future Rails versions
   # get ':controller(/:action(/:id))'
