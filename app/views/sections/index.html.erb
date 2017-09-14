@@ -17,7 +17,7 @@
       <td><%= section.position %></td>
       <td><%= section.page_id %></td>
       <td><%= section.name %></td>
-      <td class="center"><%= section.visible ? 'Yes' : 'No' %></td>
+      <td class="center"><%= status_tag(section.visible) %></td>
       <td class="center"><%= section.position %></td>
       <td class="actions">
         <%= link_to("Show", section_path(section), :class => 'action show') %>
