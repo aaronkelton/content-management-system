@@ -1,6 +1,6 @@
 class DemoController < ApplicationController
 
-  layout :application
+  layout 'application'
 
   def index
     render template: 'demo/index.html.erb'
