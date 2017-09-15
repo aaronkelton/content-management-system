@@ -3,10 +3,10 @@ class PagesController < ApplicationController
   layout 'admin'
 
   before_action :find_and_sort_subjects, only: [:new, :create, :edit, :update]
+  before_action :set_page_count, only: [:new, :create, :edit, :update]
 
   def new
     @page = Page.new
-    @page_count = Page.count + 1
   end
 
   def create
@@ -15,7 +15,6 @@ class PagesController < ApplicationController
       flash[:notice] = "Page created successfully!"
       redirect_to pages_path
     else
-      @page_count = Page.count + 1
       render 'new'
     end
   end
@@ -30,7 +29,6 @@ class PagesController < ApplicationController
 
   def edit
     @page = Page.find(params[:id])
-    @page_count = Page.count
   end
 
   def update
@@ -39,7 +37,6 @@ class PagesController < ApplicationController
       flash[:notice] = "Page upated successfully!"
       redirect_to page_path(@page)
     else
-      @page_count = Page.count
       render template: 'edit'
     end
   end
@@ -62,5 +59,10 @@ class PagesController < ApplicationController
 
     def find_and_sort_subjects
       @subjects = Subject.sorted
+    end
+
+    def set_page_count
+      @page_count = Page.count
+      @page_count += 1 if params[:action] == 'new' || params[:action] == 'create'
     end
 end
