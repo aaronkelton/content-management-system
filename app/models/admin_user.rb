@@ -41,10 +41,15 @@ class AdminUser < ApplicationRecord
                     confirmation: true
 
   validate :username_is_allowed
+  validate :no_new_users_on_friday, on: :create
 
-  # private
-  #
-  #   def username_is_allowed
-  #     errors.add(:username, "has been restricted from use.") if FORBIDDEN_USERNAMES.include?(username)
-  #   end
+  private
+
+    def username_is_allowed
+      errors.add(:username, "has been restricted from use.") if FORBIDDEN_USERNAMES.include?(username)
+    end
+
+    def no_new_users_on_friday
+      errors.add(:base, "Sry, can't add peeps on Fridays.") if Time.now.wday == 5
+    end
 end
