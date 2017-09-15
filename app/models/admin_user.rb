@@ -34,10 +34,17 @@ class AdminUser < ApplicationRecord
                         length: { maximum: 50 }
   validates :username, presence: true,
                        length: { within: 8..25 }
-                       unique: true
+                      #  uniqueness: true
   validates :email, presence: true,
                     length: { maximum: 100 },
                     format: { with: EMAIL_REGEX },
                     confirmation: true
 
+  validate :username_is_allowed
+
+  # private
+  #
+  #   def username_is_allowed
+  #     errors.add(:username, "has been restricted from use.") if FORBIDDEN_USERNAMES.include?(username)
+  #   end
 end

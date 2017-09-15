@@ -20,5 +20,5 @@ class Page < ApplicationRecord
   # validates_uniqueness_of :permalink
 
   validates :name, presence: true, length: { maximum: 255 }
-  validates :permalink, presence: true, length: { within: 3..255 }, unique: true
+  validates :permalink, presence: true, length: { within: 3..255 }, uniqueness: true
 end
