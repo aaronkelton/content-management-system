@@ -73,6 +73,6 @@ class SubjectsController < ApplicationController
 
     def subject_params
       # params[:subject] # <- mass assignment disallowed!
-      params.require(:subject).permit(:name, :position, :visible)
+      params.require(:subject).permit(:name, :position, :visible, :created_at)
     end
 end
