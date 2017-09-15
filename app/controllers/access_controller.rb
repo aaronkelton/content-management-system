@@ -1,4 +1,7 @@
 class AccessController < ApplicationController
+
+  layout 'admin'
+
   def menu
     # display text and links
   end
