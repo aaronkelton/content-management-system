@@ -50,7 +50,7 @@ class SubjectsController < ApplicationController
       redirect_to subject_path(@subject)
     else
       # If save fails, redisplay the form so user can fix problems
-      @subject_count = Subject.count + 1
+      @subject_count = Subject.count
       render template: 'edit'
     end
   end
