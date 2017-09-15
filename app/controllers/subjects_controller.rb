@@ -19,7 +19,7 @@ class SubjectsController < ApplicationController
     else
       # If save fails, redisplay the form so user can fix problems
       @subject_count = Subject.count + 1
-      render template: 'new'
+      render 'new'
     end
   end
   #### END CREATE ####
@@ -51,7 +51,7 @@ class SubjectsController < ApplicationController
     else
       # If save fails, redisplay the form so user can fix problems
       @subject_count = Subject.count
-      render template: 'edit'
+      render 'edit'
     end
   end
   ### END UPDATE ###

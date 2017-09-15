@@ -25,4 +25,5 @@ class Subject < ApplicationRecord
   }
   ################# END SCOPES! #####################
 
+  validates_presence_of :name
 end
