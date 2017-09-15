@@ -2,10 +2,11 @@ class PagesController < ApplicationController
 
   layout 'admin'
 
+  before_action :find_and_sort_subjects, only: [:new, :create, :edit, :update]
+
   def new
     @page = Page.new
     @page_count = Page.count + 1
-    @subjects = Subject.sorted
   end
 
   def create
@@ -15,7 +16,6 @@ class PagesController < ApplicationController
       redirect_to pages_path
     else
       @page_count = Page.count + 1
-      @subjects = Subject.sorted
       render 'new'
     end
   end
@@ -31,7 +31,6 @@ class PagesController < ApplicationController
   def edit
     @page = Page.find(params[:id])
     @page_count = Page.count
-    @subjects = Subject.sorted
   end
 
   def update
@@ -41,7 +40,6 @@ class PagesController < ApplicationController
       redirect_to page_path(@page)
     else
       @page_count = Page.count
-      @subjects = Subject.sorted
       render template: 'edit'
     end
   end
@@ -60,5 +58,9 @@ class PagesController < ApplicationController
   private
     def page_params
       params.require(:page).permit(:name, :visible, :position, :permalink, :subject_id)
+    end
+
+    def find_and_sort_subjects
+      @subjects = Subject.sorted
     end
 end
