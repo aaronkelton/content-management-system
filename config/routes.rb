@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'access/menu'
-
-  get 'access/login'
-
   # ROOT Route
   # match '/', to: 'demo#index', via: :get #longhand MATCH-y form
   root to: 'demo#index' # shorter sans MATCH
   # root 'demo#index' # super-short-y
+
+  ### ROUTES FOR ACCESS ###
+  get 'admin', to: 'access#menu'
+  get 'access/menu'
+  get 'access/login'
+  post 'access/attempt_login'
+  get 'access/logout'
+  ### END ACCESS ###
 
   ### RESOURCE ROUTES ###
   resources :subjects do
