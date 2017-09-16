@@ -27,6 +27,13 @@ class AdminUsersController < ApplicationController
   end
 
   def update
+    @admin_user = AdminUser.find(params[:id])
+    if @admin_user.update_attributes(admin_user_params)
+      flash[:notice] = "Admin user updated successfully."
+      redirect_to access_menu_path
+    else
+      render 'edit'
+    end
   end
 
   def delete
