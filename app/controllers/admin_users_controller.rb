@@ -9,6 +9,13 @@ class AdminUsersController < ApplicationController
   end
 
   def create
+    @admin_user = AdminUser.new(admin_user_params)
+    if @admin_user.save
+      flash[:notice] = "Admin user created successfully."
+      redirect_to access_menu_path
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -26,4 +33,10 @@ class AdminUsersController < ApplicationController
 
   def destroy
   end
+
+  private
+
+    def admin_user_params
+      params.require(:admin_user).permit(:first_name, :last_name, :username, :email, :password)
+    end
 end
