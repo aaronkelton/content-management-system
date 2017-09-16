@@ -6,6 +6,8 @@ class AdminUser < ApplicationRecord
   has_many :sections, through: :section_edits
   ########################
 
+  scope :ordered_by_last_name_first_name, lambda { order(last_name: :DESC, first_name: :DESC) } 
+
   ################################
   ## explicitly define ar_table
   # self.table_name = "admin_user"
