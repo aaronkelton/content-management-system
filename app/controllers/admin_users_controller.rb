@@ -1,4 +1,7 @@
 class AdminUsersController < ApplicationController
+
+  layout 'admin'
+
   def new
   end
 
