@@ -6,6 +6,7 @@ class AdminUsersController < ApplicationController
   end
 
   def index
+    @admin_users = AdminUser.ordered_by_last_name_first_name
   end
 
   def edit
