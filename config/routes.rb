@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'admin_users/new'
+
+  get 'admin_users/create'
+
+  get 'admin_users/index'
+
+  get 'admin_users/edit'
+
+  get 'admin_users/update'
+
+  get 'admin_users/delete'
+
+  get 'admin_users/destroy'
+
   # ROOT Route
   # match '/', to: 'demo#index', via: :get #longhand MATCH-y form
   root to: 'demo#index' # shorter sans MATCH
