@@ -1,2 +1,30 @@
-<h1>AdminUsers#index</h1>
-<p>Find me in app/views/admin_users/index.html.erb</p>
+<% @page_title = "All Admin Users" %>
+<div class="admin_users index">
+  <h2>Admin Users</h2>
+
+  <%= image_tag 'plus_sign.png', size: '11x11', alt: '+' %>
+  <%= link_to("Add New Admin User", new_admin_user_path, class: 'action new') %>
+
+  <table class="listing" summary="AdminUser list">
+    <tr class="header">
+      <!-- <th>#</th> -->
+      <th>Admin User</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>Actions</th>
+    </tr>
+    <% @admin_users.each do |admin_user| %>
+    <tr>
+      <!-- <td><%= admin_user.id %></td> -->
+      <td><%= admin_user.name %></td>
+      <td class="center"><%= admin_user.email %></td>
+      <td class="center"><%= admin_user.username %></td>
+      <td class="actions">
+        <!-- <%= link_to("Show", admin_user_path(admin_user), :class => 'action show') %> -->
+        <%= link_to("Edit", edit_admin_user_path(admin_user), class: 'action edit') %>
+        <%= link_to("Delete", delete_admin_user_path(admin_user), class: 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
