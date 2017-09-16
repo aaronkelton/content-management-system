@@ -7,6 +7,7 @@ class AccessController < ApplicationController
 
   def menu
     # display text and links
+    @full_name = AdminUser.name
   end
 
   def login
