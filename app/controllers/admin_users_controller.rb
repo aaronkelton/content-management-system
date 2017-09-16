@@ -5,6 +5,7 @@ class AdminUsersController < ApplicationController
   before_action :confirm_logged_in
 
   def new
+    @admin_user = AdminUser.new
   end
 
   def create
