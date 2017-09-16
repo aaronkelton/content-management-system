@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  ### RESOURCE ROUTES FOR ADMIN_USERS ###
-  resources :admin_users do
-    member do
-      get :delete
-    end
-  end
-  ### END RESOURCE ROUTES ###
-
   # ROOT Route
   # match '/', to: 'demo#index', via: :get #longhand MATCH-y form
   root to: 'demo#index' # shorter sans MATCH
@@ -20,6 +12,14 @@ Rails.application.routes.draw do
   post 'access/attempt_login'
   get 'access/logout'
   ### END ACCESS ###
+
+  ### RESOURCE ROUTES FOR ADMIN_USERS ###
+  resources :admin_users do
+    member do
+      get :delete
+    end
+  end
+  ### END RESOURCE ROUTES ###
 
   ### RESOURCE ROUTES ###
   resources :subjects do
