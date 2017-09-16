@@ -41,6 +41,9 @@ class AdminUsersController < ApplicationController
   end
 
   def destroy
+    @admin_user = AdminUser.find(params[:id]).delete
+    flash[:notice] = "Admin user deleted."
+    redirect_to admin_users_path
   end
 
   private
