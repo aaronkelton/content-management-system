@@ -43,6 +43,10 @@ class AdminUser < ApplicationRecord
   validate :username_is_allowed
   validate :no_new_users_on_friday, on: :create
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   private
 
     def username_is_allowed
