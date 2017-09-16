@@ -1,18 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'admin_users/new'
-
-  get 'admin_users/create'
-
-  get 'admin_users/index'
-
-  get 'admin_users/edit'
-
-  get 'admin_users/update'
-
-  get 'admin_users/delete'
-
-  get 'admin_users/destroy'
+  ### RESOURCE ROUTES FOR ADMIN_USERS ###
+  resources :admin_users do
+    member do
+      get :delete
+    end
+  end
+  ### END RESOURCE ROUTES ###
 
   # ROOT Route
   # match '/', to: 'demo#index', via: :get #longhand MATCH-y form
