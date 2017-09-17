@@ -1,4 +1,7 @@
 class Subject < ApplicationRecord
+
+  acts_as_list
+
   ################# ASSOCIATIONS ####################
   has_many :pages
   # has_many :sections, through: :pages

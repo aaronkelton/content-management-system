@@ -1,4 +1,7 @@
 class Page < ApplicationRecord
+
+  acts_as_list scope: :subject
+
   ################# ASSOCIATIONS ####################
   belongs_to :subject, optional: false # 5.0+ defaults false
   has_many :sections
