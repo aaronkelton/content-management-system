@@ -7,21 +7,21 @@ class PagesController < ApplicationController
   before_action :set_page_count, only: [:new, :create, :edit, :update]
 
   def new
-    @page = Page.new
+    @page = Page.new(subject_id: @subject.id)
   end
 
   def create
     @page = Page.new(page_params)
     if @page.save
       flash[:notice] = "Page created successfully!"
-      redirect_to pages_path
+      redirect_to pages_path((subject_id: @subject.id))
     else
       render 'new'
     end
   end
 
   def index
-    @pages = Page.sorted
+    @pages = @subject.page.sorted
   end
 
   def show
@@ -36,7 +36,7 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
     if @page.update_attributes(page_params)
       flash[:notice] = "Page upated successfully!"
-      redirect_to page_path(@page)
+      redirect_to page_path(@page, subject_id: @subject.id)
     else
       render 'edit'
     end
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
     @page.destroy
     flash[:notice] = "Page destroyed successfully!"
-    redirect_to pages_path
+    redirect_to pages_path(subject_id: @subject.id)
   end
 
   private
