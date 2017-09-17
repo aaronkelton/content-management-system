@@ -63,7 +63,7 @@ class PagesController < ApplicationController
     end
 
     def set_page_count
-      @page_count = Page.count
+      @page_count = @subject.pages.count
       @page_count += 1 if params[:action] == 'new' || params[:action] == 'create'
     end
 end
