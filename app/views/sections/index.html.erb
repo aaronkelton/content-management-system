@@ -1,6 +1,8 @@
+<% @page_title = "All Sections" %>
+
 <div class="sections index">
 
-  <%= link_to "<< Back to Pages", pages_path, class: 'back-link' %>
+  <%= link_to "<< Back to Pages", pages_path(subject_id: @page.subject_id), class: 'back-link' %>
 
   <h2>Sections</h2>
 

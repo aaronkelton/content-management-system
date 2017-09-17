@@ -4,7 +4,6 @@ class SectionsController < ApplicationController
 
   before_action :confirm_logged_in
   before_action :find_page
-  before_action :find_and_sort_pages, only: [:new, :create, :edit, :update]
   before_action :set_section_count, only: [:new, :create, :edit, :update]
 
   def new
@@ -13,6 +12,7 @@ class SectionsController < ApplicationController
 
   def create
     @section = Section.new(section_params)
+    @section.page = @page
     if @section.save
       flash[:notice] = "Section created successfully!"
       redirect_to sections_path(page_id: @page.id)
@@ -56,15 +56,11 @@ class SectionsController < ApplicationController
 
   private
   def section_params
-    params.require(:section).permit(:name, :position, :visible, :content_type, :content, :page_id)
+    params.require(:section).permit(:name, :position, :visible, :content_type, :content)
   end
 
   def find_page
     @page = Page.find(params[:page_id])
-  end
-
-  def find_and_sort_pages
-    @pages = Page.sorted
   end
 
   def set_section_count
