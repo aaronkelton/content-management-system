@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
   # ROOT Route
-  # match '/', to: 'demo#index', via: :get #longhand MATCH-y form
-  root to: 'demo#index' # shorter sans MATCH
-  # root 'demo#index' # super-short-y
+  # match '/', to: 'public#index', via: :get #longhand MATCH-y form
+  root to: 'public#index' # shorter sans MATCH
+  # root 'public#index' # super-short-y
+
+  get 'show/:permalink', to: 'public#show'
 
   ### ROUTES FOR ACCESS ###
   get 'admin', to: 'access#menu'
