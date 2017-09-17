@@ -1,2 +1,13 @@
-<h1>Public#show</h1>
-<p>Find me in app/views/public/show.html.erb</p>
+<%= @page_title = @page.name %>
+<h2><%= @page.name %></h2>
+
+<% @page.sections.visible.sorted.each do |section| %>
+  <div class="section">
+    <% case section.content_type %>
+    <% when 'HTML' %>
+      <%= raw(sanitize(section.content, :tags => ['strong', 'em', 'a'])) %>
+    <% when 'text' %>
+      <%= simple_format(section.content) %>
+    <% end %>
+  </div>
+<% end %>
