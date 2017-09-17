@@ -3,25 +3,26 @@ class SectionsController < ApplicationController
   layout 'admin'
 
   before_action :confirm_logged_in
+  before_action :find_page
   before_action :find_and_sort_pages, only: [:new, :create, :edit, :update]
   before_action :set_section_count, only: [:new, :create, :edit, :update]
 
   def new
-    @section = Section.new(name: 'Default')
+    @section = Section.new(name: 'Default', page_id: @page.id)
   end
 
   def create
     @section = Section.new(section_params)
     if @section.save
       flash[:notice] = "Section created successfully!"
-      redirect_to sections_path
+      redirect_to sections_path(page_id: @page.id)
     else
       render 'new'
     end
   end
 
   def index
-    @sections = Section.sorted
+    @sections = @page.sections.sorted
   end
 
   def show
@@ -36,7 +37,7 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
     if @section.update_attributes(section_params)
       flash[:notice] = "Section upated successfully!"
-      redirect_to section_path(@section)
+      redirect_to section_path(@section, page_id: @page.id)
     else
       render template: 'edit'
     end
@@ -50,12 +51,16 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
     @section.destroy
     flash[:notice] = "Section destroyed successfully!"
-    redirect_to sections_path
+    redirect_to sections_path(page_id: @page.id)
   end
 
   private
   def section_params
     params.require(:section).permit(:name, :position, :visible, :content_type, :content, :page_id)
+  end
+
+  def find_page
+    @page = Page.find(params[:page_id])
   end
 
   def find_and_sort_pages

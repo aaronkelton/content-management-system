@@ -27,6 +27,7 @@
       <td class="center"><%= page.sections.size %></td>
       <td class="center"><%= page.permalink %></td>
       <td class="actions">
+        <%= link_to("View Sections", sections_path(page_id: page.id), :class => 'action show') %>
         <%= link_to("Show", page_path(page, subject_id: @subject.id), :class => 'action show') %>
         <%= link_to("Edit", edit_page_path(page, subject_id: @subject.id), :class => 'action edit') %>
         <%= link_to("Delete", delete_page_path(page, subject_id: @subject.id), :class => 'action delete') %>
