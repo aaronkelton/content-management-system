@@ -1,7 +1,11 @@
+<% @page_title = "All Pages" %>
+
+<%= link_to "<< Back to Subjects", subjects_path, class: 'back-link' %>
+
 <div class="pages index">
   <h2>Pages</h2>
 
-  <%= link_to("Add New Page", new_page_path, :class => 'action new') %>
+  <%= link_to("Add New Page", new_page_path(subject_id: @subject.id), :class => 'action new') %>
 
   <table class="listing" summary="Page list">
     <tr class="header">
@@ -23,9 +27,9 @@
       <td class="center"><%= page.sections.size %></td>
       <td class="center"><%= page.permalink %></td>
       <td class="actions">
-        <%= link_to("Show", page_path(page), :class => 'action show') %>
-        <%= link_to("Edit", edit_page_path(page), :class => 'action edit') %>
-        <%= link_to("Delete", delete_page_path(page), :class => 'action delete') %>
+        <%= link_to("Show", page_path(page, subject_id: @subject.id), :class => 'action show') %>
+        <%= link_to("Edit", edit_page_path(page, subject_id: @subject.id), :class => 'action edit') %>
+        <%= link_to("Delete", delete_page_path(page, subject_id: @subject.id), :class => 'action delete') %>
       </td>
     </tr>
     <% end %>

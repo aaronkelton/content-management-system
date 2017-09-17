@@ -14,14 +14,14 @@ class PagesController < ApplicationController
     @page = Page.new(page_params)
     if @page.save
       flash[:notice] = "Page created successfully!"
-      redirect_to pages_path((subject_id: @subject.id))
+      redirect_to pages_path(subject_id: @subject.id)
     else
       render 'new'
     end
   end
 
   def index
-    @pages = @subject.page.sorted
+    @pages = @subject.pages.sorted
   end
 
   def show
