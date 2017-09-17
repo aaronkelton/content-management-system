@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'public#index' # shorter sans MATCH
   # root 'public#index' # super-short-y
 
-  get 'show/:permalink', to: 'public#show'
+  get 'show/:permalink', to: 'public#show', as: 'public_show'
 
   ### ROUTES FOR ACCESS ###
   get 'admin', to: 'access#menu'
