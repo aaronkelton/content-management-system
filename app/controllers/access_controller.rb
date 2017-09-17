@@ -7,7 +7,7 @@ class AccessController < ApplicationController
 
   def menu
     # display text and links
-    @full_name = AdminUser.name
+    @username = session[:username]
   end
 
   def login
@@ -24,6 +24,7 @@ class AccessController < ApplicationController
 
     if authorized_user
       session[:user_id] = authorized_user.id
+      session[:username] = authorized_user.username
       flash[:notice] = "You are now logged in."
       redirect_to admin_path
     else
@@ -35,6 +36,7 @@ class AccessController < ApplicationController
 
   def logout
     session[:user_id] = nil
+    session[:username] = nil
     flash[:notice] = "Logged out."
     redirect_to access_login_path
   end
