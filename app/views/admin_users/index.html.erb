@@ -1,9 +1,13 @@
 <% @page_title = "All Admin Users" %>
-<div class="admin_users index">
+<div class="admin-users index">
   <h2>Admin Users</h2>
 
   <%= image_tag 'plus_sign.png', size: '11x11', alt: '+' %>
   <%= link_to("Add New Admin User", new_admin_user_path, class: 'action new') %>
+
+  <div>
+    <%= pluralize(@admin_users.size, 'admin user') %> found
+  </div>
 
   <table class="listing" summary="AdminUser list">
     <tr class="header">
@@ -16,8 +20,8 @@
     <% @admin_users.each do |admin_user| %>
     <tr>
       <!-- <td><%= admin_user.id %></td> -->
-      <td><%= admin_user.full_name %></td>
-      <td class="center"><%= admin_user.email %></td>
+      <td><%= admin_user.name %></td>
+      <td class="center"><%= mail_to(admin_user.email) %></td>
       <td class="center"><%= admin_user.username %></td>
       <td class="actions">
         <!-- <%= link_to("Show", admin_user_path(admin_user), :class => 'action show') %> -->
@@ -28,5 +32,5 @@
     <% end %>
   </table>
   <br />
-  <%= link_to 'Back to Menu', access_menu_path %>
+  <%= link_to 'Back to Menu', admin_path %>
 </div>

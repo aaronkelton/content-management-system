@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   ### END ACCESS ###
 
   ### RESOURCE ROUTES FOR ADMIN_USERS ###
-  resources :admin_users do
+  resources :admin_users, except: :show do
     member do
       get :delete
     end

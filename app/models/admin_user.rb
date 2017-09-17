@@ -6,7 +6,7 @@ class AdminUser < ApplicationRecord
   has_many :sections, through: :section_edits
   ########################
 
-  scope :ordered_by_last_name_first_name, lambda { order(last_name: :DESC, first_name: :DESC) }
+  scope :sorted, lambda { order(last_name: :ASC, first_name: :ASC) }
 
   ################################
   ## explicitly define ar_table
@@ -45,7 +45,7 @@ class AdminUser < ApplicationRecord
   validate :username_is_allowed
   validate :no_new_users_on_friday, on: :create
 
-  def full_name
+  def name
     "#{first_name} #{last_name}"
   end
 

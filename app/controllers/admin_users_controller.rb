@@ -12,14 +12,14 @@ class AdminUsersController < ApplicationController
     @admin_user = AdminUser.new(admin_user_params)
     if @admin_user.save
       flash[:notice] = "Admin user created successfully."
-      redirect_to access_menu_path
+      redirect_to admin_users_path
     else
       render 'new'
     end
   end
 
   def index
-    @admin_users = AdminUser.ordered_by_last_name_first_name
+    @admin_users = AdminUser.sorted
   end
 
   def edit
@@ -30,7 +30,7 @@ class AdminUsersController < ApplicationController
     @admin_user = AdminUser.find(params[:id])
     if @admin_user.update_attributes(admin_user_params)
       flash[:notice] = "Admin user updated successfully."
-      redirect_to access_menu_path
+      redirect_to admin_user_path
     else
       render 'edit'
     end
@@ -41,7 +41,7 @@ class AdminUsersController < ApplicationController
   end
 
   def destroy
-    @admin_user = AdminUser.find(params[:id]).delete
+    @admin_user = AdminUser.find(params[:id]).destroy
     flash[:notice] = "Admin user deleted."
     redirect_to admin_users_path
   end
