@@ -37,7 +37,7 @@ class PagesController < ApplicationController
       flash[:notice] = "Page upated successfully!"
       redirect_to page_path(@page)
     else
-      render template: 'edit'
+      render 'edit'
     end
   end
 
